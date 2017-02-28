@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">McKinley High School</string>
+    <string name="bulletin">Bulletin</string>
+    <string name="events">Events</string>
+    <string name="lunch">Lunch</string>
+    <string name="calendar">Calendar</string>
+    <string name="info">Info</string>
+    <string name="about">About</string>
+    <string name="goBack">Go Back</string>
+    <string name="notif">Notify!</string>
+</resources>
