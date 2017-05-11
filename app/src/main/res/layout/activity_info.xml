@@ -11,4 +11,62 @@
     tools:context="com.mckinleyhigh.mckinleyhighschoolapp20.InfoActivity">
 
 
+    <TextView
+        android:text="School Info Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/SchoolInfoTitle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textStyle="bold"
+        android:typeface="normal"/>
+    <TextView
+        android:text="Address Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/AddressInformation"
+        android:layout_below="@+id/SchoolInfoTitle"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:text="Contact Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/ContactInformation"
+        android:layout_below="@+id/AddressInformation"
+        android:layout_marginTop="10dp"/>
+
+
+
+    <TextView
+        android:text="Counselor Title "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/CounselorTitle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textStyle="bold"
+        android:typeface="normal"
+        android:layout_below="@+id/ContactInformation" />
+    <TextView
+        android:text="Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/Description"
+        android:layout_below="@+id/CounselorTitle" />
+    <TextView
+        android:text="Counselor Assignments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/CounselorAssignment"
+        android:layout_below="@+id/Description"/>
+
 </RelativeLayout>

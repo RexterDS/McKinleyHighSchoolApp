@@ -1,135 +1,64 @@
 package com.mckinleyhigh.mckinleyhighschoolapp20;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.database.DataSetObserver;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.SimpleExpandableListAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-//import static com.mckinleyhigh.mckinleyhighschoolapp20.R.drawable.februarybreakfastmenu;
-import static com.mckinleyhigh.mckinleyhighschoolapp20.R.id.childItem;
 
 public class LunchActivity extends AppCompatActivity{
 
+    WebView lunchWeb;
 
-    private LinkedHashMap<String, GroupItemsInfo> songsList = new LinkedHashMap<String, GroupItemsInfo>();
-    private ArrayList<GroupItemsInfo> deptList = new ArrayList<GroupItemsInfo>();
-
-    private MyExpandableListAdapter myExpandableListAdapter;
-    private ExpandableListView simpleExpandableListView;
-
+    private String url = "https://sites.google.com/a/mckinleyhs.k12.hi.us/home/lunch-menu";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lunch);
 
-        loadData();
+        lunchWeb = (WebView) findViewById(R.id.lunchWebView);
 
-        //get reference of the ExpandableListView
-        simpleExpandableListView = (ExpandableListView) findViewById(R.id.expandList);
-        // create the adapter by passing your ArrayList data
-        myExpandableListAdapter = new MyExpandableListAdapter(LunchActivity.this, deptList);
-        // attach the adapter to the expandable list view
-        simpleExpandableListView.setAdapter(myExpandableListAdapter);
+        lunchWeb.getSettings().setJavaScriptEnabled(true);
 
-        // setOnChildClickListener listener for child row click or song name click
-        simpleExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                //get the group header
-                GroupItemsInfo headerInfo = deptList.get(groupPosition);
-                //get the child info
-                ChildItemsInfo detailInfo = headerInfo.getMonthName().get(childPosition);
-                //display it or do something with it
-                return false;
-            }
+        lunchWeb.setWebViewClient(new WebViewClient(){
+
+           public void onLoadResource(WebView view, String url){
+
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsById('sites-chrome-header-wrapper')[0].style.display='none'; })()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsByClassName('sites-header-nav')[0].style.display='none'; })()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsById('sites-chrome-adminfooter-container')[0].style.display='none'; })()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsByClassName('sites-adminfooter')[0].style.display='none'; })()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsById('sites-chrome-horizontal-nav')[0].style.display='none'; })()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsById('sites-chrome-header-horizontal-nav-container')[0].style.display='none'; })()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsById('sites-chrome-header')[0].style.display='none'; })()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsById('sites-chrome-userheader')[0].style.display='none'; })()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsByClassName('sites-header-primary-row')[0].style.display='none'; })()");
+
+               lunchWeb.loadUrl("javascript:(function() { " +
+                        "document.getElementsById('sites-page-title-header')[0].style.display='none';})()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsById('sites-page-title')[0].style.display='none';})()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsByClassName('sites-layout-tile sites-tile-name-content-1';})()");
+               lunchWeb.loadUrl("javascript:(function() { " +
+                       "document.getElementsById('sites-canvas-main')[0].style.display='none';})()");
+             }
+
         });
-        // setOnGroupClickListener listener for group Song List click
-        simpleExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                //get the group header
-                GroupItemsInfo headerInfo = deptList.get(groupPosition);
-                //display it or do something with it
 
-                return false;
-            }
-        });
-
-    }
-
-    // load some initial data into out list
-    private void loadData() {
-
-        Drawable fLunch, fBreak, mLunch, mBreak;
-
-        fBreak = getResources().getDrawable(R.drawable.februarybreakfastmenu);
-        fLunch = getResources().getDrawable(R.drawable.februarylunchmenu);
-
-        mBreak = getResources().getDrawable(R.drawable.marchbreakfastmenu);
-        mLunch = getResources().getDrawable(R.drawable.marchlunchmenu);
-
-
-        addProduct("February", fBreak);
-        addProduct("February", fLunch);
-
-        addProduct("March", mBreak);
-        addProduct("March", mLunch);
-    }
-
-    private int addProduct(String getMontName, Drawable menu) {
-
-        int groupPosition = 0;
-
-        //check the hashmap if the group already exists
-        GroupItemsInfo headerInfo = songsList.get(getMontName);
-        //add the group if doesn't exists
-        if (headerInfo == null) {
-            headerInfo = new GroupItemsInfo();
-            headerInfo.setMonth(getMontName);
-            songsList.put(getMontName, headerInfo);
-            deptList.add(headerInfo);
-        }
-
-        // get the children for the group
-        ArrayList<ChildItemsInfo> productList = headerInfo.getMonthName();
-        // size of the children list
-        int listSize = productList.size();
-        // add to the counter
-        listSize++;
-
-        // create a new child and add that to the group
-        ChildItemsInfo detailInfo = new ChildItemsInfo();
-        detailInfo.setMenu(menu);
-        productList.add(detailInfo);
-        headerInfo.setMonthName(productList);
-
-        // find the group position inside the list
-        groupPosition = deptList.indexOf(headerInfo);
-        return groupPosition;
+        lunchWeb.loadUrl(url);
+        lunchWeb.getSettings().setLoadWithOverviewMode(true);
+        lunchWeb.getSettings().setUseWideViewPort(true);
+        lunchWeb.getSettings().setBuiltInZoomControls(true);
     }
 }
 

@@ -39,17 +39,8 @@ import static org.jsoup.Jsoup.connect;
 public class BulletinActivity extends AppCompatActivity {
 
     WebView bulletinWeb;
-    Document doc;
-    Elements ele;
-    int i = 0;
-    String url = "https://sites.google.com/a/mckinleyhs.k12.hi.us/home/daily-bulletin";
 
-    String[] divIdHide = {"sites-page-toolbar", "sites-notice", "sites-chrome-everything-scrollbar",
-                            "sites-chrome-everything", "sites-chrome-page-wrapper", "sites-chrome-page-wrapper-inside",
-                            "sites-chrome-main-wrapper", "sites-chrome-main-wrapper-inside", "sites-canvas",
-                            "goog-ws-editor-toolbar-container", "sites-canvas-main", "sites-canvas-bottom-panel",
-                            "sites-attachments-container", "sites-chrome-footer-wrapper", "sites-chrome-footer",
-                            "sites-chrome-adminfooter-container", "sites-chrome-onebar-footer", "server-timer-div"};
+    private String url = "https://sites.google.com/a/mckinleyhs.k12.hi.us/home/daily-bulletin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

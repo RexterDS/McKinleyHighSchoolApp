@@ -8,4 +8,14 @@
     <string name="about">About</string>
     <string name="goBack">Go Back</string>
     <string name="notif">Notify!</string>
-</resources>
+
+    <string name="titleAboutString">Title About</string>
+    <string name="titleAboutMcKinley">About McKinley High School</string>
+
+    <string name="visionTitle">Vision Title</string>
+    <string name="visiontContent">Vision Content</string>
+
+    <string name="misionStatementTitle">Mision Statement Title</string>
+    <string name="missionStatementContent">Mission Statement Content</string>
+
+ </resources>

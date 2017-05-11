@@ -11,14 +11,10 @@
     tools:context="com.mckinleyhigh.mckinleyhighschoolapp20.LunchActivity">
 
 
-    <ExpandableListView
+    <WebView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/expandList"
-        android:divider="#fff400"
-        android:dividerHeight="1dp"
-        android:childDivider="#fdff66"
-        />
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/lunchWebView"/>
+
 </RelativeLayout>

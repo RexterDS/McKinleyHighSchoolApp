@@ -1,13 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_about"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.mckinleyhigh.mckinleyhighschoolapp20.AboutActivity" >
+
+<RelativeLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mckinleyhigh.mckinleyhighschoolapp20.AboutActivity">
+    android:layout_centerVertical="true">
+
+    <TextView
+        android:text="@string/titleAboutString"
+        android:id="@+id/titleAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textStyle="bold"
+        android:typeface="normal"/>
+
+    <TextView
+        android:text="@string/visionTitle"
+        android:id="@+id/visionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/titleAbout"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:text="@string/visiontContent"
+        android:id="@+id/visionContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/visionTitle"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/missionTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/visionContent"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/missionContent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/missionTitle"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/historyTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/missionContent"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/historyContent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/historyTitle"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
+</ScrollView>
